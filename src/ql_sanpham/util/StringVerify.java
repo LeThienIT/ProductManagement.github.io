@@ -8,17 +8,17 @@ import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-public class StringVerify extends InputVerifier{
+public class StringVerify extends InputVerifier {
 
- @Override
+    @Override
     public boolean verify(JComponent input) {
-        if(input instanceof JTextField){
+        if (input instanceof JTextField) {
             // ép kiểu về JTextField
             try {
-                String text = ((JTextField)input).getText().trim();
-                if(text != null && text.length() > 0){  // ít nhất 1 kí tự
+                String text = ((JTextField) input).getText().trim();
+                if (text != null && text.length() > 0) {  // ít nhất 1 kí tự
                     return true;
-                }else {
+                } else {
                     return false;
                 }
             } catch (Exception e) {
@@ -32,11 +32,10 @@ public class StringVerify extends InputVerifier{
     public boolean shouldYieldFocus(JComponent input) {
         // lấy về kết quả để thông báo
         boolean retval = verify(input); // trả về true false
-        if(!retval){ // nếu false
+        if (!retval) { // nếu false
             JOptionPane.showMessageDialog(input, "Phải nhập dữ liệu trường này ít nhất 1 kí tự !!!");
         }
         return retval;
     }
-    
-    
+
 }

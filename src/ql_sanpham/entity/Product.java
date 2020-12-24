@@ -1,12 +1,11 @@
-
 package ql_sanpham.entity;
 
 /*
  *@Author: AnthonyLe
  * *Vjp pRo
  */
-
 public class Product {
+
     private int id;
     private int categoryid;
     private String productid;
@@ -88,6 +87,5 @@ public class Product {
     public String toString() {
         return name;
     }
-    
-    
+
 }

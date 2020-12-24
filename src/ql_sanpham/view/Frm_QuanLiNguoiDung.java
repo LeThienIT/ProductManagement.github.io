@@ -17,6 +17,7 @@ import ql_sanpham.entity.Human;
  * @author LaptopAZ.vn
  */
 public class Frm_QuanLiNguoiDung extends javax.swing.JFrame {
+
     Human_function human_function = new Human_function();
     DefaultTableModel defaultTableModel = null;
     List<Human> listHuman;
@@ -71,7 +72,6 @@ public class Frm_QuanLiNguoiDung extends javax.swing.JFrame {
         edtNoiLamViẹc = new javax.swing.JTextField();
         txtNoiLamViec = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        btnTaoChuyenTrang = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -148,15 +148,15 @@ public class Frm_QuanLiNguoiDung extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(11, 11, 11)
+                .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
+                .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNewHuman)
                     .addComponent(btnSaveHuman)
                     .addComponent(btnUpdateHuman)
                     .addComponent(btnDeleteHuman))
-                .addGap(0, 24, Short.MAX_VALUE))
+                .addGap(0, 15, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -310,13 +310,6 @@ public class Frm_QuanLiNguoiDung extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnTaoChuyenTrang.setText("Tạo");
-        btnTaoChuyenTrang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTaoChuyenTrangActionPerformed(evt);
-            }
-        });
-
         btnBack.setIcon(new javax.swing.ImageIcon("E:\\XAMPP\\Netbeans\\Project\\16.2_QuanLiSanPham\\Upload_Image\\back.png")); // NOI18N
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -359,16 +352,12 @@ public class Frm_QuanLiNguoiDung extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnTaoChuyenTrang, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(289, 289, 289))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(270, 270, 270)
                         .addComponent(jLabel3)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(268, 268, 268))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(275, 275, 275)
+                .addGap(347, 347, 347)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -386,12 +375,10 @@ public class Frm_QuanLiNguoiDung extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
+                        .addGap(64, 64, 64)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(btnTaoChuyenTrang, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -408,7 +395,7 @@ public class Frm_QuanLiNguoiDung extends javax.swing.JFrame {
         edtDienThoai.setText("");
         edtEmail.setText("");
         edtQueQuan.setText("");
-        edtCongViec.setText("");  
+        edtCongViec.setText("");
         edtNoiLamViẹc.setText("");
     }//GEN-LAST:event_btnNewHumanActionPerformed
 
@@ -422,25 +409,27 @@ public class Frm_QuanLiNguoiDung extends javax.swing.JFrame {
         String country = edtQueQuan.getText().trim();
         String job = edtCongViec.getText().trim();
         String workplace = edtNoiLamViẹc.getText().trim();
-        if(name.equals("") 
-                || String.valueOf(cmnd).equals("") 
-                || address.equals("") 
-                || String.valueOf(telephone).equals("") 
-                || email.equals("") 
-                || country.equals("") 
-                || job.equals("") 
-                || workplace.equals("")){
+        if (name.equals("")
+                || String.valueOf(cmnd).equals("")
+                || address.equals("")
+                || String.valueOf(telephone).equals("")
+                || email.equals("")
+                || country.equals("")
+                || job.equals("")
+                || workplace.equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Mời bạn nhập đầy đủ thông tin !!!");
-        }else{
+        } else {
             int idHuman = human_function.insert(new Human(0, name, cmnd, address, telephone, email, country, job, workplace));
-            if(idHuman >= 0){
-                JOptionPane.showMessageDialog(rootPane, "Thêm mới thành công");
+            if (idHuman >= 0) {
+//                JOptionPane.showMessageDialog(rootPane, "Thêm mới thành công");
+                this.dispose();
+                new Frm_QuanLiSanPham().setVisible(true);
                 loadDataToJTable();
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(rootPane, "Thêm mới thất bại");
             }
         }
-            
+
     }//GEN-LAST:event_btnSaveHumanActionPerformed
 
     private void btnUpdateHumanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateHumanActionPerformed
@@ -453,25 +442,24 @@ public class Frm_QuanLiNguoiDung extends javax.swing.JFrame {
         String country = edtQueQuan.getText().trim();
         String job = edtCongViec.getText().trim();
         String workplace = edtNoiLamViẹc.getText().trim();
-        if(name.equals("") 
-//                || String.valueOf(cmnd).equals("") 
-                || address.equals("") 
-//                || String.valueOf(telephone).equals("") 
-                || email.equals("") 
-                || country.equals("") 
-                || job.equals("") 
-                || workplace.equals("")){
+        if (name.equals("")
+                //                || String.valueOf(cmnd).equals("") 
+                || address.equals("")
+                //                || String.valueOf(telephone).equals("") 
+                || email.equals("")
+                || country.equals("")
+                || job.equals("")
+                || workplace.equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Mời bạn nhập đầy đủ thông tin !!!");
-        }else{
+        } else {
             boolean isUpdate = human_function.update(new Human(humanSelected.getIdHuman(), name, cmnd, address, telephone, email, country, job, workplace));
-            if(isUpdate){
+            if (isUpdate) {
                 JOptionPane.showMessageDialog(rootPane, "Sửa mới thành công");
                 loadDataToJTable();
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(rootPane, "Sửa thất bại, mời bạn thử lại");
             }
         }
-        
     }//GEN-LAST:event_btnUpdateHumanActionPerformed
 
     private void btnDeleteHumanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteHumanActionPerformed
@@ -489,12 +477,6 @@ public class Frm_QuanLiNguoiDung extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnDeleteHumanActionPerformed
-
-    private void btnTaoChuyenTrangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoChuyenTrangActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-        new Frm_QuanLiSanPham().setVisible(true);
-    }//GEN-LAST:event_btnTaoChuyenTrangActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
@@ -547,14 +529,14 @@ public class Frm_QuanLiNguoiDung extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Frm_QuanLiNguoiDung().setDefaultCloseOperation(EXIT_ON_CLOSE);
-                new Frm_QuanLiNguoiDung().setSize(700,600);
-                new Frm_QuanLiNguoiDung().setMinimumSize(new Dimension(700,0));
+                new Frm_QuanLiNguoiDung().setSize(700, 600);
+                new Frm_QuanLiNguoiDung().setMinimumSize(new Dimension(700, 0));
                 new Frm_QuanLiNguoiDung().setMaximumSize(new Dimension(600, Integer.MAX_VALUE));
                 new Frm_QuanLiNguoiDung().setVisible(true);
             }
         });
     }
-    
+
     private void loadDataToJTable() {
         defaultTableModel = new DefaultTableModel();
         Object[] columnTitle = {"Tên", "Cmnd", "Địa chỉ", "Điện thoại", "Email", "Quê quán", "Công việc", "Nơi làm việc"};
@@ -564,14 +546,14 @@ public class Frm_QuanLiNguoiDung extends javax.swing.JFrame {
 //        String nameCategory = "";
         for (Human human : listHuman) {
 //            nameCategory = category_function.get(product.getCategoryid()).get().getName();
-            rowData = new Object[]{human.getName()
-                    , human.getCmnd()
-                    , human.getAddress()
-                    , human.getTelephone()
-                    , human.getEmail()
-                    , human.getCountry()
-                    , human.getJob()
-                    , human.getWorkplace()};
+            rowData = new Object[]{human.getName(),
+                human.getCmnd(),
+                human.getAddress(),
+                human.getTelephone(),
+                human.getEmail(),
+                human.getCountry(),
+                human.getJob(),
+                human.getWorkplace()};
             defaultTableModel.addRow(rowData);
         }
         tblHuman.setModel(defaultTableModel);
@@ -582,7 +564,6 @@ public class Frm_QuanLiNguoiDung extends javax.swing.JFrame {
     private javax.swing.JButton btnDeleteHuman;
     private javax.swing.JButton btnNewHuman;
     private javax.swing.JButton btnSaveHuman;
-    private javax.swing.JButton btnTaoChuyenTrang;
     private javax.swing.JButton btnUpdateHuman;
     private javax.swing.JTextField edtCmnd;
     private javax.swing.JTextField edtCongViec;
@@ -620,4 +601,3 @@ public class Frm_QuanLiNguoiDung extends javax.swing.JFrame {
     private javax.swing.JLabel txtTenNguoiDangKi;
     // End of variables declaration//GEN-END:variables
 }
-

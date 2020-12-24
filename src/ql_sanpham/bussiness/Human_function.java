@@ -1,4 +1,3 @@
-
 package ql_sanpham.bussiness;
 
 import java.sql.Connection;
@@ -15,8 +14,8 @@ import ql_sanpham.entity.Human;
  *@Author: AnthonyLe
  * *Vjp pRo
  */
+public class Human_function implements Dao<Human> {
 
-public class Human_function implements Dao<Human>{
     private final String TABLE_NAME = "table_human";
     MyConnection myConnection = MyConnection.getInstance();
 
@@ -26,21 +25,21 @@ public class Human_function implements Dao<Human>{
         Connection conn = myConnection.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
-       String sql = "SELECT * FROM "+TABLE_NAME;
+        String sql = "SELECT * FROM " + TABLE_NAME;
         try {
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
-            while(rs.next()){
-                listHuman.add(new Human(rs.getInt("id")
-//                        , rs.getInt("idEventHuman")
-                        , rs.getString("name")
-                        , rs.getString("cmnd")
-                        , rs.getString("address")
-                        , rs.getString("telephone")
-                        , rs.getString("email")
-                        , rs.getString("country")
-                        , rs.getString("job")
-                        , rs.getString("workplace")));
+            while (rs.next()) {
+                listHuman.add(new Human(rs.getInt("id") //                        , rs.getInt("idEventHuman")
+                        ,
+                         rs.getString("name"),
+                        rs.getString("cmnd"),
+                        rs.getString("address"),
+                        rs.getString("telephone"),
+                        rs.getString("email"),
+                        rs.getString("country"),
+                        rs.getString("job"),
+                        rs.getString("workplace")));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -59,16 +58,16 @@ public class Human_function implements Dao<Human>{
             ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
             rs = ps.executeQuery();
-            while(rs.next()){
-                human = new Human(rs.getInt("id")
-                        , rs.getString("name")
-                        , rs.getString("cmnd")
-                        , rs.getString("address")
-                        , rs.getString("telephone")
-                        , rs.getString("email")
-                        , rs.getString("country")
-                        , rs.getString("job")
-                        , rs.getString("workplace"));
+            while (rs.next()) {
+                human = new Human(rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getString("cmnd"),
+                        rs.getString("address"),
+                        rs.getString("telephone"),
+                        rs.getString("email"),
+                        rs.getString("country"),
+                        rs.getString("job"),
+                        rs.getString("workplace"));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -92,12 +91,12 @@ public class Human_function implements Dao<Human>{
             ps.setString(6, t.getCountry());
             ps.setString(7, t.getJob());
             ps.setString(8, t.getWorkplace());
-            if(ps.executeUpdate() > 0){
+            if (ps.executeUpdate() > 0) {
                 rs = ps.getGeneratedKeys();
-                while(rs.next()){
+                while (rs.next()) {
                     return rs.getInt(1);
                 }
-            }           
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -106,7 +105,7 @@ public class Human_function implements Dao<Human>{
 
     @Override
     public boolean update(Human t) {
-         Connection conn = myConnection.getConnection();
+        Connection conn = myConnection.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
         String sql = "UPDATE " + TABLE_NAME + " SET name = ?, cmnd = ?, address = ?, telephone = ?, email = ?, country = ?, job = ?, workplace = ? WHERE id = ?";
@@ -121,16 +120,16 @@ public class Human_function implements Dao<Human>{
             ps.setString(7, t.getJob());
             ps.setString(8, t.getWorkplace());
             ps.setInt(9, t.getIdHuman());
-            if(ps.executeUpdate() > 0){
+            if (ps.executeUpdate() > 0) {
                 return true;
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }finally{
+        } finally {
             try {
-                if(ps != null){
+                if (ps != null) {
                     ps.close();
-                }else if(rs != null){
+                } else if (rs != null) {
                     rs.close();
                 }
             } catch (Exception e) {
@@ -149,16 +148,16 @@ public class Human_function implements Dao<Human>{
         try {
             ps = conn.prepareStatement(sql);
             ps.setInt(1, t.getIdHuman());
-            if(ps.executeUpdate() > 0){
+            if (ps.executeUpdate() > 0) {
                 return true;
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }finally{
+        } finally {
             try {
-                if(rs != null){
+                if (rs != null) {
                     rs.close();
-                }else if(ps != null){
+                } else if (ps != null) {
                     ps.close();
                 }
             } catch (Exception e) {
@@ -167,14 +166,14 @@ public class Human_function implements Dao<Human>{
         }
         return false;
     }
-    
+
     // test chức năng của human
-     public static void main(String[] args) {
+    public static void main(String[] args) {
         System.out.println("Tất cả dữ liệu");
         Human_function human_function = new Human_function();
         for (Human human : human_function.getAll()) {
             System.out.println(human);
         }
     }
-   
+
 }

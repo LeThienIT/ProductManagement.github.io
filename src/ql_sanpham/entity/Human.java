@@ -1,12 +1,11 @@
-
 package ql_sanpham.entity;
 
 /*
  *@Author: AnthonyLe
  * *Vjp pRo
  */
-
 public class Human {
+
     private int idHuman;
 //    private int idEventHuman;
     private String name;
@@ -110,6 +109,4 @@ public class Human {
         return "Human{" + "idHuman=" + idHuman + ", name=" + name + ", cmnd=" + cmnd + ", address=" + address + ", telephone=" + telephone + ", email=" + email + ", country=" + country + ", job=" + job + ", workplace=" + workplace + '}';
     }
 
-    
-    
 }

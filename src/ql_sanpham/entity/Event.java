@@ -1,12 +1,11 @@
-
 package ql_sanpham.entity;
 
 /*
  *@Author: AnthonyLe
  * *Vjp pRo
  */
-
 public class Event {
+
     private int idEvent;
     private String nameEvent;
 
@@ -38,7 +37,5 @@ public class Event {
     public String toString() {
         return "Event{" + "idEvent=" + idEvent + ", nameEvent=" + nameEvent + '}';
     }
-    
-    
-    
+
 }

@@ -1,4 +1,3 @@
-
 package ql_sanpham.bussiness;
 
 import java.sql.Connection;
@@ -15,33 +14,34 @@ import ql_sanpham.entity.Product;
  *@Author: AnthonyLe
  * *Vjp pRo
  */
+public class Product_function implements Dao<Product> {
 
-public class Product_function implements Dao<Product>{
     private final String TABLE_NAME = "table_product";
     MyConnection myConnection = MyConnection.getInstance();
+
     @Override
     public List<Product> getAll() {
         List<Product> list = new ArrayList<>();
         Connection conn = myConnection.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = "SELECT * FROM "+TABLE_NAME;
+        String sql = "SELECT * FROM " + TABLE_NAME;
         try {
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
-            while(rs.next()){
-                list.add(new Product(rs.getInt("id")
-                        , rs.getInt("categoryid")
-                        , rs.getString("productid")
-                        , rs.getString("productname")
-                        , rs.getInt("unitprice")
-                        , rs.getInt("quantity")
-                        , rs.getString("description")));
+            while (rs.next()) {
+                list.add(new Product(rs.getInt("id"),
+                        rs.getInt("categoryid"),
+                        rs.getString("productid"),
+                        rs.getString("productname"),
+                        rs.getInt("unitprice"),
+                        rs.getInt("quantity"),
+                        rs.getString("description")));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return list;  
+        return list;
     }
 
     @Override
@@ -50,45 +50,45 @@ public class Product_function implements Dao<Product>{
         Connection conn = myConnection.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = "SELECT * FROM "+TABLE_NAME+" WHERE id = ?";
+        String sql = "SELECT * FROM " + TABLE_NAME + " WHERE id = ?";
         try {
             ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
             rs = ps.executeQuery();
-            while(rs.next()){
-                product = new Product(rs.getInt("id")
-                        , rs.getInt("categoryid")
-                        , rs.getString("productid")
-                        , rs.getString("productname")
-                        , rs.getInt("unitprice")
-                        , rs.getInt("quantity")
-                        , rs.getString("description"));
+            while (rs.next()) {
+                product = new Product(rs.getInt("id"),
+                        rs.getInt("categoryid"),
+                        rs.getString("productid"),
+                        rs.getString("productname"),
+                        rs.getInt("unitprice"),
+                        rs.getInt("quantity"),
+                        rs.getString("description"));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return Optional.of(product);
     }
-    
-   // ghi đè thêm 
+
+    // ghi đè thêm 
     public Optional<Product> get(String productId) {
         Product product = new Product();
         Connection conn = myConnection.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = "SELECT * FROM "+TABLE_NAME+" WHERE productId = ?";
+        String sql = "SELECT * FROM " + TABLE_NAME + " WHERE productId = ?";
         try {
             ps = conn.prepareStatement(sql);
             ps.setString(1, productId);
             rs = ps.executeQuery();
-            while(rs.next()){
-                product = new Product(rs.getInt("id")
-                        , rs.getInt("categoryid")
-                        , rs.getString("productid")
-                        , rs.getString("productname")
-                        , rs.getInt("unitprice")
-                        , rs.getInt("quantity")
-                        , rs.getString("description"));
+            while (rs.next()) {
+                product = new Product(rs.getInt("id"),
+                        rs.getInt("categoryid"),
+                        rs.getString("productid"),
+                        rs.getString("productname"),
+                        rs.getInt("unitprice"),
+                        rs.getInt("quantity"),
+                        rs.getString("description"));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -110,12 +110,12 @@ public class Product_function implements Dao<Product>{
             ps.setFloat(4, t.getUnitPrice());
             ps.setInt(5, t.getQuantity());
             ps.setString(6, t.getDescription());
-            if(ps.executeUpdate() > 0){
+            if (ps.executeUpdate() > 0) {
                 rs = ps.getGeneratedKeys();
-                while(rs.next()){
+                while (rs.next()) {
                     return rs.getInt(1);
                 }
-            }           
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -137,16 +137,16 @@ public class Product_function implements Dao<Product>{
             ps.setInt(5, t.getQuantity());
             ps.setString(6, t.getDescription());
             ps.setInt(7, t.getId());
-            if(ps.executeUpdate() > 0){
+            if (ps.executeUpdate() > 0) {
                 return true;
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }finally{
+        } finally {
             try {
-                if(ps != null){
+                if (ps != null) {
                     ps.close();
-                }else if(rs != null){
+                } else if (rs != null) {
                     rs.close();
                 }
             } catch (Exception e) {
@@ -165,16 +165,16 @@ public class Product_function implements Dao<Product>{
         try {
             ps = conn.prepareStatement(sql);
             ps.setInt(1, t.getId());
-            if(ps.executeUpdate() > 0){
+            if (ps.executeUpdate() > 0) {
                 return true;
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }finally{
+        } finally {
             try {
-                if(rs != null){
+                if (rs != null) {
                     rs.close();
-                }else if(ps != null){
+                } else if (ps != null) {
                     ps.close();
                 }
             } catch (Exception e) {
@@ -183,7 +183,7 @@ public class Product_function implements Dao<Product>{
         }
         return false;
     }
-    
+
     // test chức năng của product
     public static void main(String[] args) {
         System.out.println("Tất cả dữ liệu");

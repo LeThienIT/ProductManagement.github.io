@@ -1,4 +1,3 @@
-
 package ql_sanpham.util;
 
 import javax.swing.InputVerifier;
@@ -12,8 +11,8 @@ import ql_sanpham.entity.Product;
  *@Author: AnthonyLe
  * *Vjp pRo
  */
-
 public class CheckProductIdVerify extends InputVerifier {     // có lỗi cần xem xét lại
+
     Product product; // để nhận giá trị này cần 1 hàm tạo
 
     public CheckProductIdVerify(Product product) {

@@ -1,12 +1,11 @@
-
 package ql_sanpham.entity;
 
 /*
  *@Author: AnthonyLe
  * *Vjp pRo
  */
-
 public class Category {
+
     private int id;
     private String name;
     private String description;
@@ -48,7 +47,5 @@ public class Category {
     public String toString() {
         return name;
     }
-    
-    
-    
+
 }

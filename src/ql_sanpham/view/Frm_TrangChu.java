@@ -176,7 +176,7 @@ public class Frm_TrangChu extends javax.swing.JFrame {
 
     private void btnTrangChuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrangChuActionPerformed
         // TODO add your handling code here:
-         this.dispose();
+        this.dispose();
         new Frm_TrangChu().setVisible(true);
     }//GEN-LAST:event_btnTrangChuActionPerformed
 
@@ -211,11 +211,11 @@ public class Frm_TrangChu extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Frm_TrangChu().setDefaultCloseOperation(EXIT_ON_CLOSE);
-                new Frm_TrangChu().setSize(700,600);
-                new Frm_TrangChu().setMinimumSize(new Dimension(700,0));
+                new Frm_TrangChu().setSize(700, 600);
+                new Frm_TrangChu().setMinimumSize(new Dimension(700, 0));
                 new Frm_TrangChu().setMaximumSize(new Dimension(600, Integer.MAX_VALUE));
                 new Frm_TrangChu().setVisible(true);
-               
+
             }
         });
     }

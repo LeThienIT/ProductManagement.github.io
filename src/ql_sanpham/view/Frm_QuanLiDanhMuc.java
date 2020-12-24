@@ -156,10 +156,10 @@ public class Frm_QuanLiDanhMuc extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Cập nhật danh mục thành công");
                 this.dispose();
                 new Frm_QuanLiSanPham().setVisible(true);
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(rootPane, "Cập nhật danh mục không thành công");
                 this.dispose();
-                new Frm_QuanLiSanPham().setVisible(true);        
+                new Frm_QuanLiSanPham().setVisible(true);
             }
         }
     }//GEN-LAST:event_btnLuuActionPerformed
